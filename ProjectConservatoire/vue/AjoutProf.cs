@@ -80,8 +80,22 @@ namespace ProjectConservatoire.vue
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-           bool reussite = monManager.creerProf(nomBox.Text, prenomBox.Text, adresseBox.Text, telBoxx.Text, mailBoxx.Text, instrumentBox.Text, float.Parse(salaireBox.Text));
+
+            if (string.IsNullOrWhiteSpace(nomBox.Text) || string.IsNullOrWhiteSpace(prenomBox.Text) ||
+       string.IsNullOrWhiteSpace(adresseBox.Text) || string.IsNullOrWhiteSpace(telBoxx.Text) ||
+       string.IsNullOrWhiteSpace(mailBoxx.Text) || string.IsNullOrWhiteSpace(instrumentBox.Text) ||
+       string.IsNullOrWhiteSpace(salaireBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.", "Champs vides", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la création du professeur
+            }
+            if (!int.TryParse(salaireBox.Text, out int salaire))
+            {
+                MessageBox.Show("Le salaire doit être un nombre entier.", "Format incorrect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification du professeur
+            }
+
+            bool reussite = monManager.creerProf(nomBox.Text, prenomBox.Text, adresseBox.Text, telBoxx.Text, mailBoxx.Text, instrumentBox.Text, float.Parse(salaireBox.Text));
             if (reussite)
             {
                 MessageBox.Show("Professeur crée!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);

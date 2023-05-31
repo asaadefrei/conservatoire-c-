@@ -72,8 +72,22 @@ namespace ProjectConservatoire.vue
 
         private void modifierButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(nomBox.Text) || string.IsNullOrWhiteSpace(PrenomBox.Text) ||
+     string.IsNullOrWhiteSpace(adresseBox.Text) || string.IsNullOrWhiteSpace(telBox.Text) ||
+     string.IsNullOrWhiteSpace(mailBox.Text) || string.IsNullOrWhiteSpace(instrumentBox.Text) ||
+     string.IsNullOrWhiteSpace(salaireBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.", "Champs vides", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification du professeur
+            }
 
-           bool reussi=monManager.modifProf(id,(nomBox.Text).ToString(), PrenomBox.Text, adresseBox.Text, telBox.Text, mailBox.Text, instrumentBox.Text, float.Parse(salaireBox.Text));
+            if (!int.TryParse(salaireBox.Text, out int salaire))
+            {
+                MessageBox.Show("Le salaire doit être un nombre entier.", "Format incorrect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification du professeur
+            }
+
+            bool reussi =monManager.modifProf(id,(nomBox.Text).ToString(), PrenomBox.Text, adresseBox.Text, telBox.Text, mailBox.Text, instrumentBox.Text, float.Parse(salaireBox.Text));
             if (reussi)
             {
 

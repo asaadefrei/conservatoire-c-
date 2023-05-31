@@ -22,7 +22,7 @@ namespace ProjectConservatoire.vue
         List<Eleve> lEleves = new List<Eleve>();
         List<Trim> lTrim = new List<Trim>();
         List<Inscription> lInscription = new List<Inscription>();
-
+        List<int> lAnnee = new List<int>();
         public Paiement()
         {
             monManager = new Mgr();
@@ -32,13 +32,19 @@ namespace ProjectConservatoire.vue
         private void Paiement_Load(object sender, EventArgs e)
         {
 
-            lTrim = monManager.getTrim();
-            afficheTrim();
-           
+            for (int i = 2021; i <= 2025; i++)
+            {
+                lAnnee.Add(i);
+            }
+
+            anneeBox.DataSource = null;
+
+            anneeBox.DataSource = lAnnee;
+            anneeBox.DisplayMember = "Description";
 
 
-           lInscription = monManager.chargementInscriptionBDD();
-            afficheInscription();
+
+
 
 
 
@@ -78,20 +84,19 @@ namespace ProjectConservatoire.vue
 
             try
             {
-
-
                 listBoxEleve.DataSource = null;
-                listBoxEleve.DataSource = lInscription;
-                listBoxEleve.DisplayMember = "Description";
 
-                listBoxEleve.DrawMode = DrawMode.OwnerDrawFixed;
-                listBoxEleve.DrawItem += new DrawItemEventHandler(ListBoxEleve_DrawItem);
+                if (lInscription.Count > 0)
+                {
+                    listBoxEleve.DataSource = lInscription;
+                    listBoxEleve.DisplayMember = "Description";
+
+                    listBoxEleve.DrawMode = DrawMode.OwnerDrawFixed;
+                    listBoxEleve.DrawItem += new DrawItemEventHandler(ListBoxEleve_DrawItem);
+                }
             }
-
-
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
 
@@ -255,6 +260,15 @@ namespace ProjectConservatoire.vue
 
 
 
+        }
+
+        private void anneeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int anneeInt = (int)anneeBox.SelectedItem;
+            string annee = anneeInt.ToString();
+
+            lTrim = monManager.getTrimSelected(annee);
+            afficheTrim();
         }
     }
 }

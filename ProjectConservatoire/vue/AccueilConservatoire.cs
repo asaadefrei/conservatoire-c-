@@ -211,7 +211,7 @@ namespace ProjectConservatoire.vue
             Ajoutez.Visible = true;
             Supprimer.Visible = true;
             VoirDetail.Text = "Voir Détail/modifier cours";
-            Ajoutez.Text = "Ajoutez cours";
+            Ajoutez.Text = "Ajouter cours";
             Supprimer.Text = "Supprimer cours";
         }
 

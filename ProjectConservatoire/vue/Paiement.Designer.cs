@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.anneeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -95,11 +96,21 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // anneeBox
+            // 
+            this.anneeBox.FormattingEnabled = true;
+            this.anneeBox.Location = new System.Drawing.Point(93, 117);
+            this.anneeBox.Name = "anneeBox";
+            this.anneeBox.Size = new System.Drawing.Size(121, 28);
+            this.anneeBox.TabIndex = 6;
+            this.anneeBox.SelectedIndexChanged += new System.EventHandler(this.anneeBox_SelectedIndexChanged);
+            // 
             // Paiement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1301, 643);
+            this.Controls.Add(this.anneeBox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -122,5 +133,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox anneeBox;
     }
 }

@@ -280,6 +280,14 @@ namespace Conservatoire.Controleur
 
         }
 
+        public List<Trim> getTrimSelected(string annee)
+        {
+            maListeTrim = ConservatoireDAO.getTrimSelected(annee);
+            return maListeTrim;
+
+        }
+
+
 
 
 

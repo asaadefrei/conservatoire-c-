@@ -177,6 +177,69 @@ namespace Conservatoire.DAL
 
         }
 
+
+        public static List<Trim> getTrimSelected(string annee)
+        {
+
+            List<Trim> lt = new List<Trim>();
+
+            try
+            {
+
+                maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+
+
+                maConnexionSql.openConnection();
+
+
+                Ocom = maConnexionSql.reqExec("SELECT libelle,datefin from trim where datefin like '%" + annee + "%'");
+                
+
+                MySqlDataReader reader = Ocom.ExecuteReader();
+
+                Trim t;
+
+
+
+
+                while (reader.Read())
+                {
+
+                    string libelle = (string)reader.GetValue(0);
+                    string datefin = (string)reader.GetValue(1);
+
+                    //Instanciation d'un EmplyeS
+
+                    t = new Trim(libelle, datefin);
+
+                    // Ajout de cet employe à la liste 
+                    lt.Add(t);
+
+
+                }
+
+
+
+                reader.Close();
+
+                maConnexionSql.closeConnection();
+
+                // Envoi de la liste au Manager
+                return (lt);
+
+
+            }
+
+            catch (Exception emp)
+            {
+
+                throw (emp);
+
+            }
+
+
+        }
+
         public static List<Inscription> chargementInscriptionBDD()
         {
 
@@ -1027,7 +1090,7 @@ namespace Conservatoire.DAL
 
 
                 maConnexionSql.openConnection();
-                Ocom = maConnexionSql.reqExec("delete from payer where idProf = " + p.Id);
+                Ocom = maConnexionSql.reqExec("delete from payer where idEleve = " + p.Id);
 
 
                 Ocom2 = maConnexionSql.reqExec("delete from inscription where idProf = " + p.Id);

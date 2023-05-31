@@ -178,8 +178,19 @@ namespace ProjectConservatoire.vue
 
         private void button1_Click(object sender, EventArgs e) 
         {
+            if (string.IsNullOrWhiteSpace(nomBox.Text) || string.IsNullOrWhiteSpace(prenomBox.Text) ||
+     string.IsNullOrWhiteSpace(adresseBox.Text) || string.IsNullOrWhiteSpace(telBox.Text) ||
+     string.IsNullOrWhiteSpace(mailBox.Text) || string.IsNullOrWhiteSpace(niveauBox.Text) ||
+     string.IsNullOrWhiteSpace(jourBox.Text) || string.IsNullOrWhiteSpace(moisBox.Text) ||
+     string.IsNullOrWhiteSpace(anneeBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.", "Champs vides", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification de l'élève
+            }
+          
+           
 
-           string jourI = jourBox.Text;
+            string jourI = jourBox.Text;
             string moisI = moisBox.Text;
             string anneeI = anneeBox.Text;
 

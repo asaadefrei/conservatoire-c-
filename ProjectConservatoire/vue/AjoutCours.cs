@@ -88,6 +88,24 @@ namespace ProjectConservatoire.vue
         private void button1_Click(object sender, EventArgs e)
         {
 
+            if (string.IsNullOrWhiteSpace(jourBox.Text) || string.IsNullOrWhiteSpace(trancheBox.Text) ||
+     string.IsNullOrWhiteSpace(capaciteBox.Text) || string.IsNullOrWhiteSpace(niveauBox.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.", "Champs vides", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la soumission du formulaire
+            }
+
+            if (!int.TryParse(niveauBox.Text, out int niveau))
+            {
+                MessageBox.Show("Le niveau doit être un nombre entier.", "Format incorrect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification du professeur
+            }
+            if (!int.TryParse(capaciteBox.Text, out int capacite))
+            {
+                MessageBox.Show("La capacite doit être un nombre entier.", "Format incorrect", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Arrête l'exécution du code pour empêcher la modification du professeur
+            }
+
             if (ConservatoireDAO.creerCours(p.Id, jourBox.Text, trancheBox.Text, int.Parse(capaciteBox.Text), int.Parse(niveauBox.Text)))
             {
 
