@@ -16,8 +16,7 @@ Installation de l'Application de Gestion du Conservatoire (C#) :
 6.	Créez la base de données. Si vous n'avez pas déjà une base de données pour le conservatoire, vous devez la créer en utilisant un outil de gestion de base de données tel que SQL Server Management Studio. Exécutez les scripts SQL fournis avec le dépôt pour créer les tables et les relations nécessaires.
 7.	Compilez le projet pour vous assurer qu'il n'y a pas d'erreurs de compilation. Si des erreurs se produisent, vérifiez les références, les chemins d'accès aux fichiers et les dépendances manquantes.
 8.	Exécutez l'application. Lancez le projet dans votre IDE, l'application devrait s'ouvrir dans une fenêtre ou dans votre navigateur par défaut.
-9.	Testez l'application pour vous assurer qu'elle fonctionne correctement. Parcourez les différentes fonctionnalités, vérifiez l'ajout et la modification des données, et assurez-vous que la communication avec la base de données se déroule comme prévu.
-Assurez-vous d'avoir toutes les dépendances et les prérequis nécessaires pour exécuter l'application C#. Si vous rencontrez des problèmes lors de l'installation ou de l'exécution, assurez-vous de vérifier les messages d'erreur, les journaux ou les rapports pour diagnostiquer les problèmes éventuels.
+
 
 
 Architecture du projet de l'Application de Gestion du Conservatoire (Modèle MVC en C#) :
