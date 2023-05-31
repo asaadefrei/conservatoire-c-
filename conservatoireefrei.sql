@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 16 avr. 2023 à 23:33
+-- Généré le : mer. 31 mai 2023 à 09:36
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -95,7 +95,8 @@ INSERT INTO `eleve` (`IDELEVE`, `NIVEAU`, `BOURSE`) VALUES
 (35, 1, NULL),
 (39, 1, NULL),
 (40, 3, NULL),
-(42, 1, NULL);
+(42, 1, NULL),
+(44, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -144,10 +145,8 @@ CREATE TABLE IF NOT EXISTS `inscription` (
 --
 
 INSERT INTO `inscription` (`IDPROF`, `IDELEVE`, `NUMSEANCE`, `DATEINSCRIPTION`) VALUES
-(3, 39, 3, '01/05/2024'),
-(3, 40, 6, '01/09/2021'),
-(3, 42, 3, '01/01/2023'),
-(31, 34, 7, '00/00/2023');
+(31, 34, 7, '00/00/2023'),
+(41, 44, 8, '01/01/2021');
 
 -- --------------------------------------------------------
 
@@ -264,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `MAIL` varchar(32) DEFAULT NULL,
   `ADRESSE` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `personne`
@@ -272,7 +271,6 @@ CREATE TABLE IF NOT EXISTS `personne` (
 
 INSERT INTO `personne` (`ID`, `NOM`, `PRENOM`, `TEL`, `MAIL`, `ADRESSE`) VALUES
 (2, 'nomProf2', 'prenomProf2', 'telProf2', 'mailProf2', 'adresseProf2'),
-(3, 'nomProf33', 'prenomProf3', 'telProf3', 'mailProf3', 'adresseProf3'),
 (4, 'nomProf4', 'prenomProf4', 'telProf4', 'mailProf4', 'adresseProf4'),
 (5, 'p5', 'prenomProf5', 'mailProf5', 'telProf5', 'adresseProf5'),
 (6, 'nomEleve6', 'prenomEleve6', 'telEleve6', 'mailEleve6', 'adresseEleve6'),
@@ -290,35 +288,11 @@ INSERT INTO `personne` (`ID`, `NOM`, `PRENOM`, `TEL`, `MAIL`, `ADRESSE`) VALUES
 (34, 'ahmed', 'diara', 'telo', 'mailo', 'rue du balais'),
 (35, 'aa', 'vvv', 'eee', 'd', 'bbb'),
 (36, 'aa', 'aaaaa', 'eee', 'aaa', 'eeee'),
-(39, 'azerty', 'azer', 'O1', 'mail', '11 rue'),
+(39, 'azerty', 'azer', '01', 'mail', '11 rue'),
 (40, 'aisse', 'mediova', '001', 'mail@com', 'rue du pamplemousse'),
 (41, 'mortoz', 'arthur', 'tel01', 'mail', 'rue du cocilot'),
 (42, 'aaa', 'vvv', 'eee', 'mailo', 'ddd'),
-(43, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(44, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(45, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(46, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(47, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(48, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(49, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(50, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(51, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(52, 'nom', 'prenom', 'tel', 'mail', 'adresse'),
-(53, 'bb', 'nnn', 'aaa', 'c@com', 'aaaa'),
-(54, 'bb', 'nnn', 'aaa', 'c@com', 'aaaa'),
-(55, 'bb', 'nnn', 'aaa', 'c@com', 'aaaa'),
-(56, 'bb', 'nnn', 'aaa', 'c@com', 'aaaa'),
-(57, 'bb', 'nnn', 'hhh', 'c@com', 'aaaa'),
-(58, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(59, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(60, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(61, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(62, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(63, 'c', 'b', 'nnn', 'c@com', 'aaaa'),
-(64, 'c', 'b', 'aaa', 'c@com', 'aaaa'),
-(65, 'c', 'b', 'aaa', 'c@com', 'aaaa'),
-(66, 'ab', 'b', 'aaa', 'c@com', 'aaaa'),
-(68, 'asaad', 'aaa', 'aaa', 'vvc@com', 'sss');
+(44, 'aaaaa', 'aaaaaaa', 'aaaaaa', 'zzzzzzz', 'vvvvvvvv');
 
 -- --------------------------------------------------------
 
@@ -340,10 +314,8 @@ CREATE TABLE IF NOT EXISTS `prof` (
 --
 
 INSERT INTO `prof` (`IDPROF`, `REF`, `SALAIRE`) VALUES
-(3, 'Batterie', 1000),
 (31, 'Flûte traversière', 120),
-(41, 'Guitare électrique', 1200),
-(66, 'Accordéon', 1122);
+(41, 'Guitare électrique', 1200);
 
 -- --------------------------------------------------------
 
@@ -371,10 +343,8 @@ CREATE TABLE IF NOT EXISTS `seance` (
 --
 
 INSERT INTO `seance` (`IDPROF`, `NUMSEANCE`, `TRANCHE`, `JOUR`, `NIVEAU`, `CAPACITE`) VALUES
-(3, 3, '11H', 'Mercredi', 1, 15),
-(3, 6, '19h', 'Samedi', 1, 6),
-(3, 122, '17H', 'Mercredi', 1, NULL),
-(31, 7, '11H', 'Jeudi', 1, 10);
+(31, 7, '11H', 'Jeudi', 1, 10),
+(41, 8, '13h', 'Jeudi', 12, 12);
 
 -- --------------------------------------------------------
 
